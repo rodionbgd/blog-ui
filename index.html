@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Title</title>
+  <script src="https://use.fontawesome.com/b4ab91725e.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script src="main.bundle.js"></script>
+</head>
+
+<body>
+  <header class="header">
+    <h1 class="center">Blog</h1>
+  </header>
+
+  <section class="container">
+    <nav class="col-main">
+      <section class="dropdown">
+        <p class="dropdown-label">Меню</p>
+        <section class="dropdown-menu">
+          <ul class="submenu">
+            <li><a href="./index.html">Главная</a></li>
+            <li><a href="./articles.html">Статьи</a></li>
+            <li><a href="./add.html">Добавить статью</a></li>
+            <li><a href="./contact.html">Контакты</a></li>
+          </ul>
+        </section>
+      </section>
+    </nav>
+
+    <main class="main">
+      <h2 class="main__title center">Презентация</h2>
+      <section class="corousel">
+        <label for="img-per-slide">Количество слайдов для показа</label><input type="number" id="img-per-slide" value="3" min="1" />
+        <label for="img-number">Общее количество слайдов</label><input type="number" id="img-number" value="10" min="1" />
+        <label for="show-slide">Показать слайд</label><input type="number" id="show-slide" value="1" min="1" />
+      </section>
+      <ul class="main__items" id="corousel"></ul>
+    </main>
+    <aside class="sidebar">
+      <a href="/" class="sidebar__link center">our twitter</a>
+      <a href="/" class="sidebar__link center">our facebook</a>
+    </aside>
+
+  </section>
+  <footer class="footer center">
+    <a href="https://t.me/rodionbgd" class="footer__contact">
+      <i class="fa fa-telegram" aria-hidden="true"></i>
+    </a>
+  </footer>
+
+</body>
+
+</html>
