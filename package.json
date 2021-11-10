@@ -1,0 +1,67 @@
+{
+  "name": "blog_layout",
+  "version": "1.0.0",
+  "description": "Blog",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint src && prettier --check src",
+    "lint:fix": "eslint --fix src && prettier --write src",
+    "prepare": "husky install",
+    "dev": "webpack --node-env development",
+    "build": "webpack --node-env production"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test && lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": "eslint --fix",
+    "*.{js,css,md,json,yml}": "prettier --write"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rodionbgd/blog.git"
+  },
+  "keywords": [
+    "js",
+    "layout",
+    "blog"
+  ],
+  "author": "Rodion",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rodionbgd/blog/issues"
+  },
+  "homepage": "https://github.com/rodionbgd/blog#readme",
+  "devDependencies": {
+    "@babel/core": "^7.14.8",
+    "@babel/preset-env": "^7.14.9",
+    "babel-loader": "^8.2.3",
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^9.0.1",
+    "css-loader": "^6.2.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jest": "^25.2.4",
+    "file-include-webpack-plugin": "^1.3.9",
+    "html-webpack-plugin": "^5.3.2",
+    "husky": "^7.0.1",
+    "jest": "^27.3.1",
+    "lint-staged": "^11.1.2",
+    "live-server": "^1.2.1",
+    "mini-css-extract-plugin": "^2.2.0",
+    "postcss": "^8.3.11",
+    "postcss-loader": "^6.2.0",
+    "postcss-preset-env": "^6.7.0",
+    "prettier": "2.3.2",
+    "sass": "^1.38.0",
+    "sass-loader": "^12.1.0",
+    "webpack": "^5.50.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^4.0.0"
+  }
+}

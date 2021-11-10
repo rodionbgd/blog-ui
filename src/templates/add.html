@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  @@include('../partials/head/head.html')
+  <body>
+    @@include('../partials/header/header.html')
+    <section class="container">
+      @@include('../partials/sidebar_l/sidebar_l.html')
+      <main class="main">
+        <h2 class="main__title">Добавить статью</h2>
+        <form class="main__add-article">
+          <label for="title">Заголовок</label>
+          <input type="text" value="" id="title" />
+          <label for="content">Содержание</label>
+          <textarea name="article-content" id="content" rows="5"></textarea>
+          <button type="submit" id="submit-button">Добавить</button>
+        </form>
+      </main>
+      @@include('../partials/sidebar_r/sidebar_r.html')
+    </section>
+    @@include('../partials/footer/footer.html')
+  </body>
+</html>

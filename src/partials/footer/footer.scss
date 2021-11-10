@@ -1,0 +1,25 @@
+@use "../../templates/variables";
+
+.footer {
+  flex-shrink: 0;
+  //position: absolute;
+  width: 100%;
+  //bottom: 0;
+  padding: 1em 0;
+  font-size: 0.9rem;
+
+  &__contact {
+    color: variables.$bg-color;
+    font-size: 3em;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+
+    &:active,
+    &:focus,
+    &:hover {
+      color: #4564ff;
+    }
+  }
+}

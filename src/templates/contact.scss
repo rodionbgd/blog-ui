@@ -1,0 +1,23 @@
+.main__contact {
+  ul {
+    list-style-type: none;
+  }
+
+  > ul {
+    padding-left: 0;
+  }
+
+  &__addresses {
+    > li:before {
+      content: "> ";
+      color: #4564ff;
+      font-weight: bold;
+      font-size: 1em;
+    }
+
+    li {
+      margin-top: 0;
+      padding: 0.5em 1em 0.5em 0;
+    }
+  }
+}

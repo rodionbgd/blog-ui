@@ -1,0 +1,23 @@
+@use "variables";
+
+.articles {
+  grid-area: main;
+  &__title {
+    margin-top: 0;
+  }
+  &__items {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0 0.5em;
+  }
+
+  .article-item {
+    margin-top: 0;
+    * + & {
+      border-top: 1px solid variables.$bg-color;
+    }
+  }
+}

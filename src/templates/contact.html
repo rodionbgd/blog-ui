@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  @@include('../partials/head/head.html')
+  <body>
+    @@include('../partials/header/header.html')
+    <section class="container">
+      @@include('../partials/sidebar_l/sidebar_l.html')
+      <main class="main">
+        <h2 class="main__title">Контакты</h2>
+        <section class="main__contact">
+          <ul class="main__contact__addresses">
+            <li>
+              Адреса
+              <ul>
+                <li>ул. Пушкина</li>
+                <li>д. Колотушкина</li>
+              </ul>
+            </li>
+            <li>
+              Телефоны
+              <ul>
+                <li>whatsup</li>
+                <li>telegram</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <form class="main__add-article">
+          <label for="email">Email</label>
+          <input type="email" value="" id="email" />
+          <label for="title">Тема</label>
+          <input type="text" value="" id="title" />
+          <label for="content">Содержание</label>
+          <textarea name="articls" id="content" rows="5"></textarea>
+          <button type="submit" id="submit-button">Отправить</button>
+        </form>
+      </main>
+      @@include('../partials/sidebar_r/sidebar_r.html')
+    </section>
+    @@include('../partials/footer/footer.html')
+  </body>
+</html>
