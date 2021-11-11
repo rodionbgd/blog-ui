@@ -1,4 +1,5 @@
 @use "./variables";
+
 @import "../partials/header/header";
 @import "../partials/sidebar_l/sidebar_l";
 @import "../partials/sidebar_r/sidebar_r";
@@ -67,7 +68,7 @@ main {
     font-weight: bold;
   }
 
-  .corousel {
+  .carousel {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -84,7 +85,7 @@ main {
     align-items: flex-start;
     width: 100%;
     padding-left: 0;
-    //overflow: hidden;
+    overflow: hidden;
     &__item {
       position: relative;
       margin-top: 0;

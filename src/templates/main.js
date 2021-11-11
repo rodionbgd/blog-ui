@@ -3,18 +3,30 @@ import "./articles.scss";
 import "./contact.scss";
 import "./style.scss";
 
-const email = document.getElementById("email");
-const title = document.getElementById("title");
-const content = document.getElementById("content");
-const submitBtn = document.getElementById("submit-button");
+import Carousel from "./carousel";
 
-function addArticle(e) {
+let email;
+let title;
+let content;
+let submitBtn;
+
+let elem;
+let imgInSlideEl;
+let imgNumberEl;
+let sliderShowNumberEl;
+let carousel;
+
+export function submitForm(e) {
   e.preventDefault();
   if (submitBtn.classList.contains("shake")) {
     submitBtn.className = "";
     submitBtn.classList.remove("shake");
   }
-  if (content.value.length < 20 || !title.value || (email && !email.value)) {
+  if (
+    content.value.length < 20 ||
+    (title && !title.value) ||
+    (email && !email.value)
+  ) {
     submitBtn.classList.add("shake");
     setTimeout(() => submitBtn.classList.remove("shake"), 1000);
     return;
@@ -25,20 +37,72 @@ function addArticle(e) {
     submitBtn.classList.toggle("is-loading");
     submitBtn.disabled = false;
     content.disabled = false;
-    title.disabled = false;
-    email.disabled = false;
     content.value = "";
-    title.value = "";
-    email.value = "";
+    if (title) {
+      title.disabled = false;
+      title.value = "";
+    }
+    if (email) {
+      email.disabled = false;
+      email.value = "";
+    }
   }, 1000);
 
   submitBtn.disabled = true;
   content.disabled = true;
-  title.disabled = true;
-  email.disabled = true;
+  if (title) {
+    title.disabled = true;
+  }
+  if (email) {
+    email.disabled = true;
+  }
 }
 
-if (content && submitBtn) {
-  content.value = "";
-  submitBtn.addEventListener("click", addArticle);
+export function createSlider() {
+  const imgNumber = Number(imgNumberEl.value);
+  let imgInSlide = Number(imgInSlideEl.value);
+  if (imgInSlide > imgNumber) {
+    imgInSlideEl.value = `${imgNumber}`;
+    imgInSlide = imgNumber;
+  }
+  if (carousel) {
+    if (
+      imgInSlide === carousel.imgInSlide &&
+      imgNumber === carousel.imgNumber
+    ) {
+      return;
+    }
+    carousel.cleanUp();
+    carousel = null;
+  }
+  carousel = new Carousel({ elem, imgInSlide, imgNumber, sliderShowNumberEl });
 }
+
+export function init() {
+  email = document.getElementById("email");
+  title = document.getElementById("title");
+  content = document.getElementById("content");
+  submitBtn = document.getElementById("submit-button");
+
+  elem = document.getElementById("carousel");
+  imgInSlideEl = document.getElementById("img-per-slide");
+  imgNumberEl = document.getElementById("img-number");
+  sliderShowNumberEl = document.getElementById("show-slide");
+
+  if (imgNumberEl && imgInSlideEl && elem && sliderShowNumberEl) {
+    carousel = new Carousel({
+      elem,
+      imgInSlide: Number(imgInSlideEl.value),
+      imgNumber: Number(imgNumberEl.value),
+      sliderShowNumberEl,
+    });
+    imgNumberEl.addEventListener("input", createSlider);
+    imgInSlideEl.addEventListener("input", createSlider);
+  }
+  if (content && submitBtn) {
+    content.value = "";
+    submitBtn.addEventListener("click", submitForm);
+  }
+}
+
+window.addEventListener("load", init);

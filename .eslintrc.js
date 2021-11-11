@@ -1,46 +1,39 @@
 module.exports = {
-  env: {
-    browser: true,
-    es2021: true,
-    "jest/globals": true,
-  },
-  extends: ["airbnb-base", "prettier","plugin:jest/recommended"],
-  parserOptions: {
-    ecmaVersion: 12,
-    sourceType: "module",
-  },
-  overrides: [{
-    "files": ["src/*.ts"],
-    parser: "@typescript-eslint/parser",
+    env: {
+        browser: true,
+        es2021: true,
+        "jest/globals": true,
+    },
+    extends: ["airbnb-base", "prettier", "plugin:jest/recommended"],
     parserOptions: {
-      "project": "./tsconfig.json"
+        ecmaVersion: 12,
+        sourceType: "module",
     },
-    plugins: ["@typescript-eslint/eslint-plugin"],
     rules: {
-      "import/extensions":[
-          "error",
-          "ignorePackages",
-        {
-          "ts": "never",
-          "js": "never",
-        }
-      ],
-      "max-len": [
-        "error",
-        {
-          ignoreComments: true,
-          code: 120,
-        },
-      ],
-      "no-continue": "off",
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+                "ts": "never",
+                "js": "never",
+            }
+        ],
+        "max-len": [
+            "error",
+            {
+                ignoreComments: true,
+                code: 120,
+            },
+        ],
+        "no-continue": "off",
+        "no-param-reassign":["error", {"props": false},]
     },
-  }],
-  settings: {
-    "import/resolver":{
-      "node":{
-        "extensions": [".ts", ".js"],
-      }
-    }
-  },
-  plugins: ["jest"],
+    settings: {
+        "import/resolver": {
+            "node": {
+                "extensions": [".ts", ".js"],
+            }
+        }
+    },
+    plugins: ["jest"],
 };
