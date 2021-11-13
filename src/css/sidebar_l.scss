@@ -1,0 +1,72 @@
+@use "variables";
+
+.col-main {
+  flex: 1 30%;
+  border-right: 1px solid variables.$bg-color;
+}
+
+.dropdown {
+  display: inline-block;
+  position: sticky;
+  top: 8rem;
+  width: calc(100% - 2 * 0.5em);
+  //margin: 0 .5em;
+  padding: 0 1.5em;
+
+  &-label {
+    padding: 0.5em 2em 0.5em 1.5em;
+    border: 1px solid #ccc;
+    background-color: #eee;
+    margin-top: 0;
+    &:after {
+      content: "";
+      position: absolute;
+      right: 2.5em;
+      top: 1em;
+      border: 0.3em solid;
+      border-color: black transparent transparent;
+    }
+  }
+
+  &:hover &-label:after {
+    top: 0.7em;
+    border-color: transparent transparent black;
+  }
+
+  &-menu {
+    display: none;
+    position: absolute;
+    width: calc(100% - 2 * 1.5em);
+    background-color: #eee;
+    margin-top: -1em;
+  }
+
+  &:hover &-menu {
+    display: block;
+  }
+}
+
+.submenu {
+  padding-left: 0;
+  margin: 0;
+  list-style-type: none;
+  border: 1px solid #999;
+
+  > li + li {
+    border-top: 1px solid #999;
+    margin: 0;
+  }
+
+  > li > a {
+    display: block;
+    padding: 0.5em 2.5em;
+    background-color: #eee;
+    color: #369;
+    text-decoration: none;
+    margin: 0;
+
+    &:hover {
+      background-color: #fff;
+    }
+  }
+}
