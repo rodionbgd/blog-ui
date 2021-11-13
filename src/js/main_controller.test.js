@@ -48,7 +48,7 @@ describe("Controllers testing", () => {
   });
   test("Creating new carousel", () => {
     imgInSlideEl.value = `${Math.random()}`;
-    imgNumberEl.value = `${Math.random()}`;
+    imgNumberEl.value = `${-Math.random()}`;
     createSlider();
     expect(imgNumberEl.value).toBe(imgInSlideEl.value);
   });
