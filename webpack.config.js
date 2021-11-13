@@ -1,54 +1,50 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const FileIncludeWebpackPlugin = require("file-include-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin")
-const {CleanWebpackPlugin} = require("clean-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const ExcludeAssetsPlugin = require('@ianwalter/exclude-assets-plugin');
 
 module.exports = {
-    entry: `${__dirname}/src/templates/main.js`,
+    entry: {
+        "main": `${__dirname}/src/js/main_controller.js`,
+        "form": `${__dirname}/src/js/form.js`,
+    },
     output: {
-        filename: "[name].bundle.js",
-        path: path.resolve(__dirname, "dist"),
-        environment: {
-            arrowFunction: false,
-        },
+        filename: '[name].js',
     },
     mode: process.env.NODE_ENV === "development" ? "development" : "production",
     plugins: [
         new HtmlWebpackPlugin({
             title: "Contacts",
-            template: "./src/templates/contact.html",
+            template: "./src/contact.html",
             filename: "contact.html",
+            excludeAssets: [/main.js/],
         }),
         new HtmlWebpackPlugin({
-            title: "Add",
-            template: "./src/templates/add.html",
+            template: "./src/add.html",
             filename: "add.html",
+            excludeAssets: [/main.js/],
         }),
         new HtmlWebpackPlugin({
-            title: "Blog",
-            template: "./src/templates/index.html",
+            template: "./src/index.html",
             filename: "index.html",
+            excludeAssets: [/form.js/],
         }),
         new HtmlWebpackPlugin({
-            title: "Articles",
-            template: "./src/templates/articles.html",
+            template: "./src/articles.html",
             filename: "articles.html",
+            excludeAssets: [/\.js/, /form.css/],
         }),
-        new FileIncludeWebpackPlugin({
-            source: "./src/templates",
-        }),
+        new ExcludeAssetsPlugin(),
         new MiniCssExtractPlugin({
-            filename: "style.css",
+            filename: "[name].css",
         }),
-        new CleanWebpackPlugin(),
         new CopyWebpackPlugin({
             patterns: [{
-                from: "src/templates/img",
+                from: "src/img",
                 to: path.resolve(__dirname, "dist/img")
-            }]
-        })
+            }],
+        }),
     ],
     module: {
         rules: [
@@ -64,14 +60,14 @@ module.exports = {
             },
             {
                 test: /\.s[ac]ss$/i,
-                use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader", "sass-loader"],
+                use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
             },
         ],
     },
     resolve: {extensions: ['.tsx', '.ts', '.js'],},
     devServer: {
         static: {
-            directory: path.join(__dirname, "dev"),
+            directory: path.join(__dirname, "src"),
         },
         compress: true,
         port: 9000,

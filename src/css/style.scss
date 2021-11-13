@@ -1,9 +1,9 @@
-@use "./variables";
+@use "variables";
 
-@import "../partials/header/header";
-@import "../partials/sidebar_l/sidebar_l";
-@import "../partials/sidebar_r/sidebar_r";
-@import "../partials/footer/footer";
+@import "header";
+@import "sidebar_l";
+@import "sidebar_r";
+@import "footer";
 
 :root {
   box-sizing: border-box;

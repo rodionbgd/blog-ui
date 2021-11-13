@@ -28,7 +28,7 @@ export default class Carousel {
       this.elem.innerHTML += `<li class="main__items__item transit" style="min-width: calc(${
         100 / this.imgInSlide
       }%)">
-  <img src="img/item.png" alt="item ${i}">
+  <img src="./img/${Math.floor(Math.random() * 5 + 1)}.jpg" alt="item ${i}">
   <h3 class="main__items__item__title center">item ${i + 1}</h3>
 </li>`;
     }

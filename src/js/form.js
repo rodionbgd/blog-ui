@@ -1,20 +1,11 @@
-import "./add.scss";
-import "./articles.scss";
-import "./contact.scss";
-import "./style.scss";
-
-import Carousel from "./carousel";
+import "../css/add.scss";
+import "../css/contact.scss";
+import "../css/style.scss";
 
 let email;
 let title;
 let content;
 let submitBtn;
-
-let elem;
-let imgInSlideEl;
-let imgNumberEl;
-let sliderShowNumberEl;
-let carousel;
 
 export function submitForm(e) {
   e.preventDefault();
@@ -58,47 +49,12 @@ export function submitForm(e) {
   }
 }
 
-export function createSlider() {
-  const imgNumber = Number(imgNumberEl.value);
-  let imgInSlide = Number(imgInSlideEl.value);
-  if (imgInSlide > imgNumber) {
-    imgInSlideEl.value = `${imgNumber}`;
-    imgInSlide = imgNumber;
-  }
-  if (carousel) {
-    if (
-      imgInSlide === carousel.imgInSlide &&
-      imgNumber === carousel.imgNumber
-    ) {
-      return;
-    }
-    carousel.cleanUp();
-    carousel = null;
-  }
-  carousel = new Carousel({ elem, imgInSlide, imgNumber, sliderShowNumberEl });
-}
-
 export function init() {
   email = document.getElementById("email");
   title = document.getElementById("title");
   content = document.getElementById("content");
   submitBtn = document.getElementById("submit-button");
 
-  elem = document.getElementById("carousel");
-  imgInSlideEl = document.getElementById("img-per-slide");
-  imgNumberEl = document.getElementById("img-number");
-  sliderShowNumberEl = document.getElementById("show-slide");
-
-  if (imgNumberEl && imgInSlideEl && elem && sliderShowNumberEl) {
-    carousel = new Carousel({
-      elem,
-      imgInSlide: Number(imgInSlideEl.value),
-      imgNumber: Number(imgNumberEl.value),
-      sliderShowNumberEl,
-    });
-    imgNumberEl.addEventListener("input", createSlider);
-    imgInSlideEl.addEventListener("input", createSlider);
-  }
   if (content && submitBtn) {
     content.value = "";
     submitBtn.addEventListener("click", submitForm);
